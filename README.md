@@ -17,17 +17,18 @@ a much smaller size: https://github.com/mjuenema/docker-pythons
 ## Building the Docker image
 The build process is controlled through a `Makefile`. The resulting Docker image 
 is tagged with the version of the Eclipse IDE installed in the image. 
+```
+# cat Makefile
+...
+VERSION=4.5.1
+...
 
- # cat Makefile
- ...
- VERSION=4.5.1
- ...
- 
- # make
- 
- # docker images
- REPOSITORY                          TAG        IMAGE ID         VIRTUAL SIZE
- mjuenema/eclipse-pydev-pythons      4.5.1      bbc874dc97e3     1.581 GB
+# make
+
+# docker images
+REPOSITORY                          TAG        IMAGE ID         VIRTUAL SIZE
+mjuenema/eclipse-pydev-pythons      4.5.1      bbc874dc97e3     1.581 GB
+```
 
 ## Using the Docker image
 The intended purpose of this Docker image is to be the basis for a development and
@@ -39,16 +40,18 @@ a whole CentOS 6 system.
 The command will create a Docker container named "mypythonproject". The `-v` flag
 makes the X11 session of the host available to the container. This is needed
 for running Eclipse inside the container.
-
- # docker create -i -t --name="mypythonproject" \
-          -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY \
-          bbc874dc97e3
- 8951df97c95f6a6d0d3057f42b2ce1d612174b370026e4b9f7ce9c1e1dd14f8a
+```
+# docker create -i -t --name="mypythonproject" \
+         -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY \
+         bbc874dc97e3
+8951df97c95f6a6d0d3057f42b2ce1d612174b370026e4b9f7ce9c1e1dd14f8a
+```
 
 ### Starting the container
-
- # docker start -i -a mypythonproject
- bash-4.1$ eclipse &
- bash-4.1$ 
+```
+# docker start -i -a mypythonproject
+bash-4.1$ eclipse &
+bash-4.1$ 
+```
 
 Markus Juenemann, 25-Nov-2015
