@@ -11,7 +11,6 @@ ENV HOME /tmp
 
 # Update
 #
-RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 RUN yum -y update
 
 
@@ -37,7 +36,8 @@ RUN yum -y install sqlite-devel \
                    gitflow \
                    subversion \
                    mercurial \
-                   vim-enhanced 
+                   vim-enhanced \
+                   rpm-build
 
 
 # Download get-pip.py

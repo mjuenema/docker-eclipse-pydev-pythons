@@ -6,6 +6,7 @@ against the following versions of Python.
 * Python 3.5.0
 * Python 3.4.3
 * Python 3.3.6
+* Python 3.2.6
 * Python 2.7.10
 * Python 2.6.9
 
@@ -15,19 +16,13 @@ There is similar Docker image but without Eclipse and PyDev, resulting in
 a much smaller size: https://github.com/mjuenema/docker-pythons
 
 ## Building the Docker image
-The build process is controlled through a `Makefile`. The resulting Docker image 
-is tagged with the version of the Eclipse IDE installed in the image. 
+The build process is wrapped through a `Makefile`.
 ```
-# cat Makefile
-...
-VERSION=4.5.1
-...
-
 # make
 
 # docker images
 REPOSITORY                          TAG        IMAGE ID         VIRTUAL SIZE
-mjuenema/eclipse-pydev-pythons      4.5.1      bbc874dc97e3     1.581 GB
+mjuenema/eclipse-pydev-pythons                 bbc874dc97e3     1.581 GB
 ```
 
 ## Using the Docker image

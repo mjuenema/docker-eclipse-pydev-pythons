@@ -1,20 +1,7 @@
 
-# Eclipse version
-#
-VERSION=4.5.1
-
-all: clean image
-
-Dockerfile: Dockerfile.m4
-	m4 -DVERSION=${VERSION} -DBUILD=${BUILD} -DPROXY=${http_proxy} $< > $@
-	chmod 440 $@
-
-build.sh: build.m4
-	m4 -DVERSION=${VERSION} $< > $@
-	chmod 550 $@
-
-image: build.sh Dockerfile
-	/bin/sh build.sh
+all: Dockerfile
+	docker build -t mjuenema/eclipse-pydev-pythons .
 
 clean:
-	rm -fv build.sh Dockerfile
+	# I always forget the syntax
+	[ "`docker images -q -f dangling=true`" != "" ] && docker rmi `docker images -q -f dangling=true`
